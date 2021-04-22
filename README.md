@@ -1,24 +1,57 @@
-# README
+# Arca Test - Cities
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Setup
 
-Things you may want to cover:
+First, you need to build the containers:
 
-* Ruby version
+`docker-compose build`
 
-* System dependencies
+Now you can run with:
 
-* Configuration
+`docker-compose run`
 
-* Database creation
+Before use the application, you must prepare the database with the following commands:
 
-* Database initialization
+1. Go inside the application container
+```shell
+# use your own application container id or name
+docker exec -it [CONTAINER_ID|CONTAINER_NAME] bash
+```
 
-* How to run the test suite
+2. Create the database
+```shell
+rails db:create
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Execute the migrations
+```shell
+rails db:migrate
+```
 
-* Deployment instructions
+4. Populate the database
+```shell
+rails db:seed
+```
 
-* ...
+### Testing the Cities Index manually
+
+To test the cities index manually, access `http://localhost:3000/cities` (or with your custom base url)
+
+You can filter the city results by state with an URL parameter, for example: `http://localhost:3000/cities?state=Paraná`
+
+Another filter is a part of city name, like this: `http://localhost:3000/cities?name=ti`. It'll returns all cities with 'ti' as a part of the name (Curitiba, Matinhos, etc)
+
+### Run automated tests
+
+If you already created and migrated the database, follow this steps to run the automated tests:
+
+1. Go inside the application container
+```shell
+# use your own application container id or name
+docker exec -it [CONTAINER_ID|CONTAINER_NAME] bash
+```
+
+2. Run the tests with RSpec
+```shell
+rspec
+```

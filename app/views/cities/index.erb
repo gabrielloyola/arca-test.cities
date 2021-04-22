@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cities</h1>
+
+<table style='text-align: left'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>State</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td style='padding: 5px 20px 5px 0'><%= city.name %></td>
+        <td style='padding: 5px 0 5px 0'><%= city.state.initials %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

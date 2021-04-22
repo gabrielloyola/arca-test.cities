@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 pr = State.create!(name: 'Paraná', initials: 'PR')
 sc = State.create!(name: 'Santa Catarina', initials: 'SC')
 rs = State.create!(name: 'Rio Grande do Sul', initials: 'RS')
